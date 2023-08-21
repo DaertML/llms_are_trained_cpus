@@ -24,4 +24,25 @@ in a similar manner, it is expected that the same happens for the LLM, unless...
 
 And this is where this gets interesting; LLMs are not a 1 to 1 mapping (or metaphor) to CPUs, in this case LLMs are "trained" CPUs
 in a way in which, the LLM will (likely) be capable of generating output for a given input in a embedding language (I am coining this
-term as the way a natural text gets transformed into the input ids introduced in the LLM).
+term as the way a natural text gets transformed into the input ids introduced in the LLM), if and only if, the model is trained with
+such embeddings, otherwise, it will not be able to generate coherent computations, given a certain input. We need to define what coherent
+means in this case; for the case of CPUs it would be like when you point the CPU to a data map in memory and starts executing the data
+as if it were code (this is one of the sources of cybersecurity issues: buffer and heaps overflows). So, we can consider that coherent
+generations are related to generations that produce semantically correct text, and that the output is expected from the input, at least
+in a wide variety of data inputs (it is expected that even for fine tuned LLMs, they will hallucinate or generate weird output in certain
+occassions).
+
+Some of the main ideas behind the experiments in this repository are not new, and come from the very early days of text embeddings in NLP
+(Natural Language Processing); like the experiments with semantic (arithmetic) operations with embeddings, early discovered in word2vec;
+in which the user can apply arithmetic operations on the embedding vectors and yet get interesting results; e.g.: King + Woman = Queen.
+
+This repository has been motivated by the recent work in these repositories:
+- https://github.com/MF-FOOM/wikivec2text
+- https://github.com/yoheinakajima/llm_vs_vector
+
+The idea that an LLM behaves like a CPU is not something new, it has been explained in multiple podcasts, videos, blogs, papers... It can
+certainly do computations and we can train them to do certain kinds of computations by following the natural language explanations.
+
+It is remarkable that somehow the tokenizer behaves in some way as the compiler in a programming language, as the natural language text
+(source code in a programming language), gets compiled into a bunch of numbers that represent data and instructions, the machine code, the executable.
+
