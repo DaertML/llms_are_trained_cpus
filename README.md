@@ -46,3 +46,29 @@ certainly do computations and we can train them to do certain kinds of computati
 It is remarkable that somehow the tokenizer behaves in some way as the compiler in a programming language, as the natural language text
 (source code in a programming language), gets compiled into a bunch of numbers that represent data and instructions, the machine code, the executable.
 
+# Types of LLMs
+## Encoder-Decoder models:
+This kind of LLMs is interesting, from the point of view of the comparison between the LLM and the CPU. Encoder-Decoder architectures have been
+around much before the appearance of the LLM (e.g.: the autoencoder), and have been the base of the resolution of many problems, even out of the AI ecosystem
+(e.g.: Error Correcting Codes to fix communication errors in a transmission). The objective of the encoder is to translate the input data into a "latent space",
+such latent space is later used as the data to work with, make computations with, to recover the representation from... Such architecture is also common with
+compression algorithms.
+
+For the case of the LLM, the natural language is introduced in the LLM, it is translated to tokens, and the Encoder produces the latent space; if we follow the ideas
+presented up until this point; the input ids introduced in the LLM were a metaphor for the machine code, or executable if we refer to the CPU;
+so the output from the Encoder, is a kind of enriched machine code, machine code that has been filled with metadata by the LLM. In a certain way it is like if
+the compiler added canaries to the program, and debugging metadata that can later be used by a debugger. In some kind of way it is different in the case of the LLMs;
+in our case the Encoder kind of programs how it wants the Decoder to behave under the given latent space. Later on the Decoder (this is much more like the CPU in this case
+so, an alternative title would be decoders_are_trained_cpus :)), will read on the latent space as well as the SOS (Start Of Sentence) token; and will produce the output.
+
+I have a feeling that the usage of an Encoder helps the Decoder to have a richer amount of possible programming modes, it has been seen with the T5 models by Google; how
+greatly the model could be programmed by using prefixes in the prompt that were easily identified by the model, to compute the output.
+
+## Encoder only models:
+This kind of models is of great interest as well, as they produce an embedding, instead of generating text like you would have in other kind of LLMs. The encoder
+produces such embeddings that could be of great use, in cases like semantic search, document retrieval, topic modelling... In this case the richer the embedding, the more use we can have
+for the model.
+
+# Crafting embeddings by hand:
+There have been several works that study the way LLMs work down to a deep level, and that even manually program the embedding matrices and weights
+in the model manually, in order to do a certain specific task, 
